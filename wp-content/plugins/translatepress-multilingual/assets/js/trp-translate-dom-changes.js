@@ -610,5 +610,6 @@ function trp_allow_detect_dom_changes_to_run(){
 
 // Initialize the Translate Press Editor when the script loads
 if ( trp_allow_detect_dom_changes_to_run() ) {
+    return;
     trpTranslator = new TRP_Translator();
 }
