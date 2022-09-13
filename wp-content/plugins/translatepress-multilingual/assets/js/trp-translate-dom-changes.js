@@ -600,6 +600,7 @@ function trp_get_IE_version() {
 }
 
 function trp_allow_detect_dom_changes_to_run(){
+    return false;
     var IE_version = trp_get_IE_version();
     if ( IE_version != 0 && IE_version <= 11 ){
         return false;
@@ -610,6 +611,5 @@ function trp_allow_detect_dom_changes_to_run(){
 
 // Initialize the Translate Press Editor when the script loads
 if ( trp_allow_detect_dom_changes_to_run() ) {
-    return;
     trpTranslator = new TRP_Translator();
 }
