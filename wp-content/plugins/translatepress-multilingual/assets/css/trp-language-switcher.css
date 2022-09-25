@@ -131,10 +131,10 @@ a[class*='button']
 /*, a*/
 /*, h1,h2,h3,h4,h5,h6,h7*/
 {
-    clear: both;
-    display: inline-block;
+    clear: both !important;
+    display: inline-block !important;
     max-width: 100%;
-    white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
