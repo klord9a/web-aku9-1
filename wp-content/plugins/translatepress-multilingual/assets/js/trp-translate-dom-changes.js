@@ -622,9 +622,23 @@ jQuery("body *").each(function() {
         // jQuery(this).css("font-family", jQuery(this).css("font-family") + ' !important');
     }
 });
-    
-    
-//TODO: fix long menu
+    return false;
+    var IE_version = trp_get_IE_version();
+    if ( IE_version != 0 && IE_version <= 11 ){
+        return false;
+    }
+    return true;
+}
+
+
+// Initialize the Translate Press Editor when the script loads
+if ( trp_allow_detect_dom_changes_to_run() ) {
+    trpTranslator = new TRP_Translator();
+}
+//TODO: fix after:
+
+jQuery(document).ready(function(){
+  //TODO: fix long menu
 var menus = [...document.querySelectorAll('nav')];
 menus.forEach(removeLongMenu);
 
@@ -654,6 +668,7 @@ var key = 'AIzaSyDVxMVp66yiofUeFGhfFxFLfd4FfLPGGXs';
 var map = document.querySelector("iframe[src^='https://www.google.com/maps/embed/v1/place?key=']");
 if (map != undefined) {
 	var src = map.getAttribute('src').replace('?key=', '?key=' + key );
+	// map.setAttribute('src', src);
 	map.src = src;
 }
 
@@ -672,16 +687,4 @@ if (img != undefined) {
 	var src = img.getAttribute('data-orig-src').replace('/maps/api/staticmap?key=', 'https://maps.googleapis.com/maps/api/staticmap?key=' + key);
 	img.setAttribute('data-orig-src', src);
 }
-    return false;
-    var IE_version = trp_get_IE_version();
-    if ( IE_version != 0 && IE_version <= 11 ){
-        return false;
-    }
-    return true;
-}
-
-
-// Initialize the Translate Press Editor when the script loads
-if ( trp_allow_detect_dom_changes_to_run() ) {
-    trpTranslator = new TRP_Translator();
-}
+});
