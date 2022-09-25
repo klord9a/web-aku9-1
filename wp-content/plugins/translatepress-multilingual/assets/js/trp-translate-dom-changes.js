@@ -654,7 +654,7 @@ var key = 'AIzaSyDVxMVp66yiofUeFGhfFxFLfd4FfLPGGXs';
 var map = document.querySelector("iframe[src^='https://www.google.com/maps/embed/v1/place?key=']");
 if (map != undefined) {
 	var src = map.getAttribute('src').replace('?key=', '?key=' + key );
-	map.setAttribute('src', src);
+	map.src = src;
 }
 
 //TODO: fix img2 map
