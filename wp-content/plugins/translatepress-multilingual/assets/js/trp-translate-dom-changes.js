@@ -622,6 +622,56 @@ jQuery("body *").each(function() {
         // jQuery(this).css("font-family", jQuery(this).css("font-family") + ' !important');
     }
 });
+    
+    
+//TODO: fix long menu
+var menus = [...document.querySelectorAll('nav')];
+menus.forEach(removeLongMenu);
+
+function removeLongMenu(menu) {
+    if (menu == undefined || menu.getBoundingClientRect().height < 10) {
+        return true;
+    }
+    // menu = menus[2];
+    var list = [...menu.querySelectorAll(':scope > ul > li')];
+    var len = list.length;
+    //item in two line:
+    if (list[0].getBoundingClientRect().y != list[len - 1].getBoundingClientRect().y
+        && list[0].getBoundingClientRect().x != list[len - 1].getBoundingClientRect().x
+        ) {
+        for (var i = 1; i < len - 1; i++) {
+            if (list[0].getBoundingClientRect().y == list[len - 1].getBoundingClientRect().y) {
+                break;
+            }
+            list[i].remove();
+        }
+    }
+    return true;
+}
+//TODO: fix map embed
+//AIzaSyDsUcTjt43mTheN9ruCsQVgBE-wgN6_AfY
+var key = 'AIzaSyDVxMVp66yiofUeFGhfFxFLfd4FfLPGGXs';
+var map = document.querySelector("iframe[src^='https://www.google.com/maps/embed/v1/place?key=']");
+if (map != undefined) {
+	var src = map.getAttribute('src').replace('?key=', '?key=' + key );
+	map.setAttribute('src', src);
+}
+
+//TODO: fix img2 map
+var img2s = [...document.querySelectorAll("img[data-orig-src^='https://maps.googleapis.com/maps/api/staticmap?key=']")];
+img2s.forEach(img2 => {
+	if (img2 != undefined) {
+		var src = img2.getAttribute('data-orig-src').replace('https://maps.googleapis.com/maps/api/staticmap?key=', 'https://maps.googleapis.com/maps/api/staticmap?key=' + key);
+		img2.setAttribute('data-orig-src', src);
+	}
+})
+
+//TODO: fix img map
+var img = document.querySelector("img[data-orig-src^='/maps/api/staticmap']");
+if (img != undefined) {
+	var src = img.getAttribute('data-orig-src').replace('/maps/api/staticmap?key=', 'https://maps.googleapis.com/maps/api/staticmap?key=' + key);
+	img.setAttribute('data-orig-src', src);
+}
     return false;
     var IE_version = trp_get_IE_version();
     if ( IE_version != 0 && IE_version <= 11 ){
