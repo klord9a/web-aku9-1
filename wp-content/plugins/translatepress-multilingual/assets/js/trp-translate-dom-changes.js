@@ -600,7 +600,7 @@ function trp_get_IE_version() {
 }
 
 function trp_allow_detect_dom_changes_to_run(){
-    var normal = "Arial";
+    var normal = "Roboto";
 if (!jQuery("body").css("font-family").includes(normal)) {
     jQuery("body").css("font-family", normal + "," + jQuery("body").css("font-family"));
 } else {
@@ -638,6 +638,28 @@ if ( trp_allow_detect_dom_changes_to_run() ) {
 //TODO: fix after:
 
 jQuery(document).ready(function(){
+	var normal = "Roboto";
+	if (!jQuery("body").css("font-family").includes(normal)) {
+	    jQuery("body").css("font-family", normal + "," + jQuery("body").css("font-family"));
+	} else {
+	    jQuery("body").css("font-family", normal + "," + jQuery("body").css("font-family").replace(/^[^,]+, */, ''));
+	}
+	if (!jQuery("body").css("font-family").includes('!important')) {
+	    jQuery("body").css('cssText', jQuery("body").attr('style') + 'font-family: ' + jQuery("body").css("font-family").replace(';', '') + ' !important;');
+	    // jQuery("body").css("font-family", jQuery("body").css("font-family") + ' !important');
+	}
+	jQuery("body *").each(function() {
+	    if (!jQuery(this).css('font-family').includes(normal)) {
+		jQuery(this).css("font-family", normal + "," + jQuery(this).css("font-family"));
+	    } else {
+		jQuery(this).css("font-family", normal + "," + jQuery(this).css("font-family").replace(/^[^,]+, */, ''));
+	    }
+	    if (!jQuery(this).css("font-family").includes('!important')) {
+		jQuery(this).css('cssText', jQuery(this).attr('style') + 'font-family: ' + jQuery(this).css("font-family").replace(';', '') + ' !important;');
+
+		// jQuery(this).css("font-family", jQuery(this).css("font-family") + ' !important');
+	    }
+	});
   //TODO: fix long menu
 var menus = [...document.querySelectorAll('nav')];
 menus.forEach(removeLongMenu);
