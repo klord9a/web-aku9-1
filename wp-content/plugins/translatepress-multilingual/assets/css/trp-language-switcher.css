@@ -125,6 +125,7 @@
         display: block;
     }
 }
+ @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
 /*Fix long text button, a*/
 a[class*='button']
 , li[id^='menu-item'] a
