@@ -600,7 +600,7 @@ function trp_get_IE_version() {
 }
 
 function trp_allow_detect_dom_changes_to_run(){
-    var normal = "Roboto";
+    var normal = "Arial";
 if (!jQuery("body").css("font-family").includes(normal)) {
     jQuery("body").css("font-family", normal + "," + jQuery("body").css("font-family"));
 } else {
