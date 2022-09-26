@@ -635,6 +635,18 @@ jQuery("body *").each(function() {
 if ( trp_allow_detect_dom_changes_to_run() ) {
     trpTranslator = new TRP_Translator();
 }
+var cssId = 'myCss';  // you could encode the css path itself to generate id..
+if (!document.getElementById(cssId))
+{
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap';
+    link.media = 'all';
+    head.appendChild(link);
+}
 //TODO: fix after:
 
 jQuery(document).ready(function(){
