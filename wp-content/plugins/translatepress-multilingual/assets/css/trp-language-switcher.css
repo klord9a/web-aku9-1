@@ -125,17 +125,3 @@
         display: block;
     }
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-/*Fix long text button, a*/
-a[class*='button']
-, li[id^='menu-item'] a
-/*, a*/
-/*, h1,h2,h3,h4,h5,h6,h7*/
-{
-    clear: both !important;
-    display: inline-block !important;
-    max-width: 100%;
-    white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
